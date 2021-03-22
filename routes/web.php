@@ -21,12 +21,13 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 //to save data from create post page
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 //to view edit post using postId as a dynamic parameter
-Route::get('/posts/{postId}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 //to save editing
-Route::put('/posts/{postId}', [PostController::class, 'update'])->name('posts.update');
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 //to view single post using postId as a dynamic parameter
-Route::get('/{postId}', [PostController::class, 'show'])->name('posts.show');
-
+Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
+//delete
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
 

@@ -20,18 +20,28 @@
       <tr>
         <th scope="row">{{ $post['id'] }}</th>
         <td>{{ $post['title'] }}</td>
-        <td>{{ $post['posted_by'] }}</td>
-        <td>{{ $post['created_at'] }}</td>
+        <td>{{ $post->user ? $post->user->name : 'user not found' }}</td>
+        <td>{{ substr($post['created_at'], 0, 10) }}</td>
         <td>
         
-          <x-buttons.button href="{{  route('posts.show',['postId' => $post['id']]) }}" type="primary" name="View" />
+          <x-buttons.button href="{{  route('posts.show',['post' => $post['id']]) }}" type="primary" name="View" />
 
-          <x-buttons.button href="{{  route('posts.edit',['postId' => $post['id']]) }}" type="secondary" name="Edit" />
-
-         <x-buttons.button  href="" type="danger" name="Delete" />
+          <x-buttons.button href="{{  route('posts.edit',['post' => $post['id']]) }}" type="secondary" name="Edit" />
+      <form  style="display:inline-block;" action="{{ route('posts.destroy', ['post' => $post['id']]) }}" method="post">
+      @csrf
+      @method('DELETE')
+      <button class="btn btn-danger" style="margin-bottom:20px;" type="submit"  onClick="return confirm('Are you sure to delete this post? ')">Delete</button>
+    
+      </form>
+     
         </td>
       </tr>
     @endforeach
     </tbody>
 </table>
+<div class="d-flex justify-content-center">
+{{ $posts->links() }}
+</div>
+
+
 @endsection
