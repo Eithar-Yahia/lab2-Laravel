@@ -63,7 +63,7 @@ class PostController extends Controller{
  
         
         $requestData = $request->all();
-
+        
 
         Post::create($requestData);
 
