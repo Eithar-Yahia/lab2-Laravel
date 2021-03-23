@@ -3,6 +3,20 @@
 @section('title')Create Page @endsection
 
 @section('content')
+
+<h1>Create Post</h1>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<!-- Create Post Form -->
 <form method="POST" action="{{ route('posts.store') }}" style="text-align:left;">
     @csrf
     <div class="form-group">

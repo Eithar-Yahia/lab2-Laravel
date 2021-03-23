@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 use App\Models\Post;
 use App\Models\User;
@@ -44,7 +46,9 @@ class PostController extends Controller{
     );
     }
 
-    public function update(Request $request, $post){
+    public function update(UpdatePostRequest $request, $post){
+;
+        
         $post = Post::find($post);
         $requestData = $request->all();
        
@@ -54,7 +58,9 @@ class PostController extends Controller{
     }
     //To redirect after saving new post
 
-    public function store(Request $request){
+    public function store(StorePostRequest $request){
+
+ 
         
         $requestData = $request->all();
 
