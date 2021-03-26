@@ -11,6 +11,7 @@ use App\Models\User;
 
 class PostController extends Controller{
 
+    
 
     //To handel index view
     public function index(){
